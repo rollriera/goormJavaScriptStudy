@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Event Bubbling</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    body * {
+        margin: 10px;
+        border: 1px solid red;
+    }
+</style>
+<body>
+    <form onclick="alert('form')">Form
+        <div onclick="alert('div')">Div
+            <!-- 이벤트 중지시키려면 event.stopPropagation()을 사용하면 된다. -->
+            <p onclick="event.stopPropagation()">P</p>
+        </div>
+    </form>
+    <!-- <script>
+        const form = document.querySelector('form');
+        const div = document.querySelector('div');
+        const p = document.querySelector('p');
+
+// event.target => 실제 이벤트가 시작된 타겟 요소
+// this (event.currentTarget) => 핸들러가 할당된 요소.
+        form.onclick = function (event) {
+            event.target.style.backgroundColor = 'yellow';
+
+            setTimeout(() => {
+            alert("target = " + event.target.tagName + ", this=" + this.tagName);
+            event.target.style.backgroundColor = '';
+        },0);
+
+        };
+    </script> -->
+</body>
+
+</html>
